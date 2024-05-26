@@ -3,6 +3,7 @@ import { account, appwriteConfig, avatars, databases } from './config';
 import { ID, Query } from 'appwrite';
 import { useMutation } from 'react-query';
 
+// ============================== SIGN UP
 export async function createUserAccount(user: INewUser) {
   try {
     const newAccount = await account.create(
@@ -30,6 +31,7 @@ export async function createUserAccount(user: INewUser) {
   }
 }
 
+// ============================== SAVE USER TO DB
 export async function saveUserToDB(user: {
   accountId: string;
   email: string;
@@ -51,6 +53,7 @@ export async function saveUserToDB(user: {
   }
 }
 
+// ============================== SIGN IN
 export async function signInAccount(user: { email: string; password: string }) {
   try {
     const session = await account.createEmailPasswordSession(
@@ -82,5 +85,16 @@ export async function getCurrentUser() {
   } catch (error) {
     console.log(error);
     return null;
+  }
+}
+
+// ============================== SIGN OUT
+export async function signOutAccount() {
+  try {
+    const session = await account.deleteSession('current');
+
+    return session;
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { SignupValidation } from '@/lib/validation';
 import { Link, useNavigate } from 'react-router-dom';
-import Loader from '@/components/ui/shared/Loader';
+import Loader from '@/components/shared/Loader';
 
 import {
   useCreateUserAccount,
